@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Viewer</title>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <h1>Names</h1>
+        </div>
+        <div>
+            <ul id="listItem"></ul>
+        </div>
+
+        <script>
+
+            fetch('http://localhost:8080/getall')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 'data' should look like: { entity_dir: ["folder1", "folder2", ...] }
+                    const list = document.getElementById('listItem');
+                    list.innerHTML = ''; // clear any existing content
+
+                    data.entity_dir.forEach(name => {
+                        const li = document.createElement('li');
+                        
+                        const aTag = document.createElement('a');
+                        aTag.href = `viewer.html?name=${name}`;
+
+                        aTag.textContent = name;
+                        li.appendChild(aTag);                        
+                        list.appendChild(li);                        
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        </script>
+
+</body>
+
+</html>

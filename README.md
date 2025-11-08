@@ -2,7 +2,7 @@
 A simple photo viewer
 
 
-# CSS notes
+#> CSS notes
 
 - `#id`: selects the element with that `id`.
 - `.class`: selects the element with that `class`.
@@ -19,3 +19,19 @@ The CSS transition property is a shorthand property for:
 
 - `:=`: declare and assign a new variable
 - `=`: assign an already declared variable
+
+<details>
+
+<summary>Tips for collapsed sections</summary>
+
+### You can add a header
+
+You can add text within a collapsed section.
+
+You can add an image or a code block, too.
+
+```ruby
+   puts "Hello World"
+```
+
+</details>
